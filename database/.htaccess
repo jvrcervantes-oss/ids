@@ -1,7 +1,1 @@
 Require all denied
-
-# Excepción TEMPORAL: permitir ejecutar la semilla una sola vez.
-# Tras crear el usuario de prueba, borra seed.php y quita este bloque.
-<Files "seed.php">
-  Require all granted
-</Files>
