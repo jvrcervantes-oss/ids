@@ -1,0 +1,8 @@
+# Documentos subidos — nunca accesibles por URL ni ejecutables.
+Require all denied
+
+# Doble cinturón: impedir ejecución de cualquier script aunque algo fallara arriba.
+<FilesMatch "\.(php|php\d|phtml|phar|cgi|pl|py|sh|html?)$">
+  Require all denied
+</FilesMatch>
+php_flag engine off

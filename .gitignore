@@ -1,0 +1,17 @@
+# Secretos y datos — nunca a git
+private/config.php
+
+# Documentos subidos (viven solo en el servidor)
+private/uploads/*
+!private/uploads/.htaccess
+!private/uploads/.gitkeep
+
+# Dependencias / temporales
+vendor/
+*.log
+.DS_Store
+Thumbs.db
+
+# Mockups de diseño (no son producción)
+*.dc.html
+support.js
