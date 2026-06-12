@@ -1,1 +1,6 @@
 Require all denied
+
+# Excepción TEMPORAL: semilla de documentos de ejemplo. Borrar tras usar.
+<Files "seed_docs.php">
+  Require all granted
+</Files>
