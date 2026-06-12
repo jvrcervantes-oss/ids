@@ -31,7 +31,7 @@ if ($u && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
 page_top('Crear contraseña', ['header' => false]);
 ?>
-<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;background:linear-gradient(160deg,#FBF7EF 0%,#E8EEF5 100%)">
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 20px;background:linear-gradient(160deg,#FDF7F7 0%,#FBEAEB 100%)">
   <div style="width:100%;max-width:440px">
     <div style="text-align:center;margin-bottom:28px"><?= ids_logo(false) ?></div>
     <div class="card" style="padding:32px">

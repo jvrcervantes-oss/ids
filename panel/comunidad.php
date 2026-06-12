@@ -60,7 +60,7 @@ page_top($com['nombre'], ['nav' => $nav]);
           <a href="<?= e($b) ?>/panel/download.php?doc=<?= (int)$d['id'] ?>" class="card"
              style="text-decoration:none;display:flex;align-items:center;gap:16px;padding:16px 18px">
             <div style="width:40px;height:40px;border-radius:10px;background:var(--azul);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a0 0 0 0 1 0 0H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="#21395A" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="#21395A" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13a0 0 0 0 1 0 0H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" stroke="#3447AA" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="#3447AA" stroke-width="1.5" stroke-linejoin="round"/></svg>
             </div>
             <div style="flex:1;min-width:0">
               <div style="font-weight:600"><?= e($d['titulo']) ?></div>
