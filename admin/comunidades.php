@@ -34,6 +34,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif ($accion === 'borrar') {
         $id = (int)($_POST['id'] ?? 0);
+        // Borrar primero los archivos físicos de sus documentos: el ON DELETE
+        // CASCADE elimina las filas pero NO los ficheros del disco (quedarían huérfanos).
+        $uploadsDir = rtrim((string)config('uploads_dir'), '/\\');
+        $files = $pdo->prepare('SELECT filename_real FROM documents WHERE community_id=?');
+        $files->execute([$id]);
+        foreach ($files->fetchAll() as $row) {
+            $p = $uploadsDir . DIRECTORY_SEPARATOR . $row['filename_real'];
+            if (is_file($p)) @unlink($p);
+        }
         $pdo->prepare('DELETE FROM communities WHERE id=?')->execute([$id]);
         audit((int)$admin['id'], 'community_delete', "#$id");
         flash_set('ok', 'Comunidad eliminada (y sus documentos asociados).');

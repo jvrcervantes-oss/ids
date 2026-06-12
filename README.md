@@ -32,17 +32,18 @@ database/            schema.sql + seed.php
 3. **Subir el código** al `public_html` del dominio/subdominio (Git deploy + webhook, igual que el resto de proyectos).
 4. **Carpeta de subidas**: asegurarse de que `private/uploads/` existe y tiene permisos de escritura (755/775).
 5. **SSL**: activar el certificado gratuito y dejar el forzado de HTTPS del `.htaccess`.
-6. **Semilla** (opcional, datos de prueba): visitar `/database/seed.php` una vez y **borrar el archivo después**.
+6. **Semilla** (opcional, SOLO entorno de pruebas): visitar `/database/seed.php` una vez y **borrar el archivo del servidor inmediatamente después**. Nunca dejar `seed.php` subido en producción.
 7. **Email** (cuando haya dominio): poner `mail.enabled => true` en config y `dev_mode => false`. Mientras tanto, el alta de usuarios muestra el enlace de contraseña en pantalla para entregarlo a mano.
+8. **Admin de producción** (⚠️ obligatorio): NO usar el admin de prueba. Crear el admin real en phpMyAdmin con `password_hash = NULL` y entregarle un enlace de set-password (igual que a un vecino), **o** insertar un hash generado con `password_hash('clave-fuerte-única', PASSWORD_DEFAULT)`. La cuenta `admin@idsfincas.es` solo existe para desarrollo.
 
-## Credenciales de prueba (tras ejecutar seed.php)
+## Credenciales de prueba (SOLO desarrollo — nunca en producción)
+
+> ⚠️ Estas credenciales están documentadas y son públicas dentro del repo del estudio. Sirven únicamente para el entorno local tras ejecutar `seed.php`. **Antes de pasar a producción: borrar `seed.php`, eliminar/rotar estas cuentas y crear el admin real con contraseña única.**
 
 | Rol | Email | Contraseña |
 |-----|-------|-----------|
 | Admin | `admin@idsfincas.es` | `IDSadmin2026!` |
 | Vecino | `vecino@idsfincas.es` | `vecino2026` |
-
-> Cambiar/eliminar estas cuentas antes de pasar a producción real.
 
 ## Estado
 

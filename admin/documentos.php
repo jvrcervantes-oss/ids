@@ -18,6 +18,29 @@ function allowed_doc_ext(): array
             'ppt','pptx','odt','ods','txt','csv','zip'];
 }
 
+/** MIME real (por extensión) que aceptamos. El contenido debe coincidir con la extensión. */
+function allowed_doc_mimes(string $ext): array
+{
+    $map = [
+        'pdf'  => ['application/pdf'],
+        'jpg'  => ['image/jpeg'], 'jpeg' => ['image/jpeg'],
+        'png'  => ['image/png'], 'gif' => ['image/gif'], 'webp' => ['image/webp'],
+        'txt'  => ['text/plain'], 'csv' => ['text/plain','text/csv','application/csv'],
+        'zip'  => ['application/zip','application/x-zip-compressed',
+                   // Office moderno (docx/xlsx/pptx/odt/ods) son ZIP por dentro:
+                   'application/octet-stream'],
+        'doc'  => ['application/msword','application/octet-stream'],
+        'xls'  => ['application/vnd.ms-excel','application/octet-stream'],
+        'ppt'  => ['application/vnd.ms-powerpoint','application/octet-stream'],
+        'docx' => ['application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/zip','application/octet-stream'],
+        'xlsx' => ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','application/zip','application/octet-stream'],
+        'pptx' => ['application/vnd.openxmlformats-officedocument.presentationml.presentation','application/zip','application/octet-stream'],
+        'odt'  => ['application/vnd.oasis.opendocument.text','application/zip','application/octet-stream'],
+        'ods'  => ['application/vnd.oasis.opendocument.spreadsheet','application/zip','application/octet-stream'],
+    ];
+    return $map[$ext] ?? [];
+}
+
 /** Nombre original saneado para mostrar/descargar. */
 function sanitize_filename(string $name): string
 {
@@ -71,6 +94,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $mime  = finfo_file($finfo, $f['tmp_name']) ?: 'application/octet-stream';
         finfo_close($finfo);
+
+        // El contenido real debe concordar con la extensión declarada.
+        // Bloquea, p. ej., un .pdf que en realidad es HTML/SVG ejecutable.
+        if (!in_array($mime, allowed_doc_mimes($ext), true)) {
+            flash_set('error', 'El contenido del archivo no coincide con su extensión (.' . e($ext) . ').');
+            redirect($self);
+        }
 
         $real = bin2hex(random_bytes(16)) . '.' . $ext;
         $dest = rtrim($uploadsDir, '/\\') . DIRECTORY_SEPARATOR . $real;

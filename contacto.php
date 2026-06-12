@@ -24,6 +24,17 @@ if ($nombre === '' || $telefono === '') {
     redirect($B . '/?error=1#contacto');
 }
 
+// Rate-limit anti-spam: máx. 5 solicitudes por IP en 10 minutos.
+// El honeypot frena bots tontos; esto frena el flood de la tabla leads.
+$rl = db()->prepare(
+    'SELECT COUNT(*) FROM leads WHERE ip = ? AND created_at > (NOW() - INTERVAL 10 MINUTE)'
+);
+$rl->execute([client_ip()]);
+if ((int)$rl->fetchColumn() >= 5) {
+    // Fingimos éxito para no dar pistas al bot; no se inserta nada.
+    redirect($B . '/?enviado=1#contacto');
+}
+
 db()->prepare('INSERT INTO leads (nombre, telefono, mensaje, ip) VALUES (?,?,?,?)')
     ->execute([
         mb_substr($nombre, 0, 120),
