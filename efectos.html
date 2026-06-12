@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Catálogo de efectos — JC Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--blue:#3447AA;--blue-d:#28368A;--pink:#FBEAEB;--gold:#D08A2E;--ink:#1c1c22;--mut:#6b6b75;--line:#e6e6ea;--sh:52,71,170}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Public Sans',sans-serif;background:#F4F4F6;color:var(--ink);line-height:1.6}
+  .head{max-width:1180px;margin:0 auto;padding:48px 24px 4px}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(28px,5vw,44px);margin:0 0 8px;letter-spacing:-.5px}
+  .head p{margin:0;color:var(--mut);max-width:66ch}
+  .cat{max-width:1180px;margin:0 auto;padding:30px 24px 0}
+  .cat h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;letter-spacing:2px;text-transform:uppercase;color:#9a9aa3;border-bottom:1px solid var(--line);padding-bottom:8px;margin:0}
+  .grid{max-width:1180px;margin:0 auto;padding:18px 24px 10px;display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1000px){.grid{grid-template-columns:1fr 1fr 1fr}}
+  .tile{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 12px 30px -24px rgba(0,0,0,.4);display:flex;flex-direction:column}
+  .tile .top{padding:16px 18px 0}
+  .ename{display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:17px;color:var(--blue);background:var(--pink);border:1px solid #f3d3d5;border-radius:999px;padding:5px 14px;cursor:copy;user-select:all;transition:transform .12s ease}
+  .ename:hover{transform:translateY(-1px)}
+  .ename::before{content:"⧉ ";font-size:12px;opacity:.6}
+  .desc{font-size:13.5px;color:var(--mut);margin:10px 2px 0}
+  .stage{flex:1;display:flex;align-items:center;justify-content:center;gap:14px;min-height:150px;padding:24px;margin-top:6px}
+  /* ---------- BOTONES base ---------- */
+  .btn{font-family:'Public Sans',sans-serif;font-weight:600;font-size:15px;border-radius:999px;padding:12px 26px;border:1.5px solid transparent;cursor:pointer;
+       background:var(--blue);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+  /* Elevación */
+  .e-elev{transition:transform .18s ease,box-shadow .18s ease,background .18s ease;box-shadow:0 6px 16px -10px rgba(var(--sh),.65)}
+  .e-elev:hover{transform:translateY(-3px);background:var(--blue-d);box-shadow:0 16px 30px -12px rgba(var(--sh),.6)}
+  .e-elev:active{transform:translateY(-1px)}
+  /* Relleno (sweep) */
+  .e-fill{background:transparent;color:var(--blue);border-color:var(--blue);transition:color .25s ease}
+  .e-fill::before{content:"";position:absolute;inset:0;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.65,0,.35,1);z-index:-1}
+  .e-fill:hover{color:#fff}
+  .e-fill:hover::before{transform:scaleX(1)}
+  /* Brillo (sheen) */
+  .e-shine::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+       background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s ease}
+  .e-shine:hover::after{left:140%}
+  .e-shine{transition:background .2s}.e-shine:hover{background:var(--blue-d)}
+  /* Empuje (push) */
+  .e-push{background:var(--gold);color:#2A2238;box-shadow:0 5px 0 0 #9c6516;transition:transform .08s ease,box-shadow .08s ease}
+  .e-push:hover{box-shadow:0 7px 0 0 #9c6516;transform:translateY(-1px)}
+  .e-push:active{transform:translateY(4px);box-shadow:0 1px 0 0 #9c6516}
+  /* Imán (magnetic) — JS */
+  .e-magnet{transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s ease;box-shadow:0 8px 20px -12px rgba(var(--sh),.7)}
+  /* Onda (ripple) — JS */
+  .e-ripple .rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rip .6s ease-out;pointer-events:none}
+  @keyframes rip{to{transform:scale(4);opacity:0}}
+  /* Flecha */
+  .e-arrow{display:inline-flex;align-items:center;gap:8px;transition:gap .2s ease,background .2s}
+  .e-arrow svg{transition:transform .25s ease}
+  .e-arrow:hover{gap:14px;background:var(--blue-d)}
+  .e-arrow:hover svg{transform:translateX(3px)}
+  /* ---------- CARDS ---------- */
+  .dcard{width:210px;border-radius:16px;padding:22px;background:#fff;border:1px solid var(--line)}
+  .dcard h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;margin:0 0 6px;font-size:18px;color:var(--blue)}
+  .dcard p{margin:0;font-size:13px;color:var(--mut)}
+  .c-levit{transition:transform .25s ease,box-shadow .25s ease}
+  .c-levit:hover{transform:translateY(-8px);box-shadow:0 26px 44px -26px rgba(var(--sh),.55)}
+  .c-tilt{transition:transform .12s ease,box-shadow .12s ease;transform-style:preserve-3d;will-change:transform}
+  .c-spot{position:relative;overflow:hidden;background:var(--blue);color:#fff;border:none}
+  .c-spot h4,.c-spot p{color:#fff}
+  .c-spot::before{content:"";position:absolute;inset:0;background:radial-gradient(180px 180px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.28),transparent 70%);transition:opacity .2s;opacity:0}
+  .c-spot:hover::before{opacity:1}
+  /* ---------- TEXTO ---------- */
+  .link{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;color:var(--blue);text-decoration:none;position:relative;cursor:pointer}
+  .l-under::after{content:"";position:absolute;left:0;bottom:-3px;height:2.5px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.65,0,.35,1)}
+  .l-under:hover::after{transform:scaleX(1)}
+  .reveal{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:30px;color:var(--blue)}
+  .r-clip{clip-path:inset(0 100% 0 0);animation:none}
+  .stage:hover .r-clip{animation:clipin .7s cubic-bezier(.76,0,.24,1) forwards}
+  @keyframes clipin{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  /* ---------- INPUT ---------- */
+  .ff{position:relative;width:230px}
+  .ff input{width:100%;padding:18px 14px 8px;border:1.5px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;outline:none;transition:border-color .2s}
+  .ff input:focus{border-color:var(--blue)}
+  .ff label{position:absolute;left:14px;top:14px;color:#9a9aa3;font-size:15px;pointer-events:none;transition:.18s ease}
+  .ff input:focus+label,.ff input:not(:placeholder-shown)+label{top:5px;font-size:11px;color:var(--blue);font-weight:600}
+  /* ---------- FEEDBACK ---------- */
+  .pulse{position:relative;display:inline-flex;align-items:center;gap:10px;font-weight:600;color:var(--blue)}
+  .pulse .dot{width:12px;height:12px;border-radius:50%;background:#2F9E5B;position:relative}
+  .pulse .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2F9E5B;animation:pp 1.6s ease-out infinite}
+  @keyframes pp{0%{transform:scale(1);opacity:.6}100%{transform:scale(3);opacity:0}}
+  .check{width:64px;height:64px}
+  .check circle{stroke:#2F9E5B;stroke-width:3;fill:none;stroke-dasharray:170;stroke-dashoffset:170;animation:dash 1.4s ease forwards}
+  .check path{stroke:#2F9E5B;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:50;stroke-dashoffset:50;animation:dash .5s .7s ease forwards}
+  .stage:hover .check circle,.stage:hover .check path{animation-play-state:running}
+  @keyframes dash{to{stroke-dashoffset:0}}
+  .spin{width:42px;height:42px;border-radius:50%;border:4px solid var(--pink);border-top-color:var(--blue);animation:sp .8s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  /* toast */
+  #toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;transition:.25s;pointer-events:none;z-index:99}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="head">
+  <h1>Catálogo de efectos</h1>
+  <p>Micro-interacciones y animaciones con nombre. Pásale el ratón o haz clic para probarlas. <strong>Clic en el nombre (la pastilla rosa) y se copia</strong> — así me dices «ponme <em>Imán</em> aquí» y nos entendemos. Todo con la paleta de IDS.</p>
+</div>
+
+<div class="cat"><h2>Botones</h2></div>
+<div class="grid">
+  <div class="tile"><div class="top"><span class="ename">Elevación</span><div class="desc">Se eleva con sombra tintada del propio color. El estándar actual de IDS.</div></div>
+    <div class="stage"><button class="btn e-elev">Pida presupuesto</button></div></div>
+  <div class="tile"><div class="top"><span class="ename">Relleno</span><div class="desc">El color entra barriendo desde la izquierda al pasar el ratón.</div></div>
+    <div class="stage"><button class="btn e-fill">Acceso clientes</button></div></div>
+  <div class="tile"><div class="top"><span class="ename">Brillo</span><div class="desc">Un destello de luz cruza el botón. Sensación premium.</div></div>
+    <div class="stage"><button class="btn e-shine">Ver más</button></div></div>
+  <div class="tile"><div class="top"><span class="ename">Empuje</span><div class="desc">Botón con relieve que se hunde físicamente al pulsar. Carácter, tangible.</div></div>
+    <div class="stage"><button class="btn e-push">Enviar</button></div></div>
+  <div class="tile"><div class="top"><span class="ename">Imán</span><div class="desc">El botón sigue al cursor levemente. Juguetón y vivo. (cursor encima)</div></div>
+    <div class="stage"><button class="btn e-magnet" data-magnet>Contacto</button></div></div>
+  <div class="tile"><div class="top"><span class="ename">Onda</span><div class="desc">Una onda nace desde donde haces clic. Feedback claro.</div></div>
+    <div class="stage"><button class="btn e-elev e-ripple" data-ripple>Haz clic</button></div></div>
+  <div class="tile"><div class="top"><span class="ename">Flecha</span><div class="desc">La flecha avanza y el espacio se abre. Invita a seguir.</div></div>
+    <div class="stage"><button class="btn e-arrow">Continuar <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+</div>
+
+<div class="cat"><h2>Tarjetas</h2></div>
+<div class="grid">
+  <div class="tile"><div class="top"><span class="ename">Levitar</span><div class="desc">La tarjeta sube y proyecta sombra. Da profundidad al pasar el ratón.</div></div>
+    <div class="stage"><div class="dcard c-levit"><h4>Los Olivos</h4><p>48 viviendas · Murcia</p></div></div></div>
+  <div class="tile"><div class="top"><span class="ename">Inclinación</span><div class="desc">Se inclina en 3D siguiendo el cursor. Efecto «carta física». (cursor encima)</div></div>
+    <div class="stage"><div class="dcard c-tilt" data-tilt><h4>Plaza Mayor</h4><p>12 viviendas · Cartagena</p></div></div></div>
+  <div class="tile"><div class="top"><span class="ename">Foco</span><div class="desc">Una luz sigue al cursor sobre la tarjeta. Sofisticado en fondos oscuros.</div></div>
+    <div class="stage"><div class="dcard c-spot" data-spot><h4>Documentos</h4><p>Actas, presupuestos…</p></div></div></div>
+</div>
+
+<div class="cat"><h2>Texto y enlaces</h2></div>
+<div class="grid">
+  <div class="tile"><div class="top"><span class="ename">Subrayado</span><div class="desc">Una línea crece bajo el enlace al pasar. Elegante y discreto.</div></div>
+    <div class="stage"><a class="link l-under">Ver documentación</a></div></div>
+  <div class="tile"><div class="top"><span class="ename">Desvelado</span><div class="desc">El titular se descubre de izquierda a derecha. (cursor encima del recuadro)</div></div>
+    <div class="stage"><span class="reveal r-clip">Cuentas claras</span></div></div>
+</div>
+
+<div class="cat"><h2>Formularios</h2></div>
+<div class="grid">
+  <div class="tile"><div class="top"><span class="ename">Etiqueta flotante</span><div class="desc">La etiqueta sube al escribir. Limpio, sin perder el contexto del campo.</div></div>
+    <div class="stage"><div class="ff"><input id="fn" placeholder=" "><label for="fn">Su nombre</label></div></div></div>
+</div>
+
+<div class="cat"><h2>Estados y feedback</h2></div>
+<div class="grid">
+  <div class="tile"><div class="top"><span class="ename">Pulso</span><div class="desc">Punto que late. Ideal para «en línea», «nuevo» o estado activo.</div></div>
+    <div class="stage"><span class="pulse"><span class="dot"></span> Atención activa</span></div></div>
+  <div class="tile"><div class="top"><span class="ename">Tic de éxito</span><div class="desc">El check se dibuja solo. Confirma una acción con satisfacción. (cursor encima)</div></div>
+    <div class="stage"><svg class="check" viewBox="0 0 60 60"><circle cx="30" cy="30" r="27"/><path d="M18 31l8 8 16-18"/></svg></div></div>
+  <div class="tile"><div class="top"><span class="ename">Cargando</span><div class="desc">Spinner sobrio con los colores de marca. Para esperas y subidas.</div></div>
+    <div class="stage"><div class="spin"></div></div></div>
+</div>
+
+<div style="height:40px"></div>
+<div id="toast">Copiado ✓</div>
+
+<script>
+// Copiar nombre al portapapeles
+document.querySelectorAll('.ename').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const txt=el.textContent.replace(/^⧉\s*/,'').trim();
+    navigator.clipboard&&navigator.clipboard.writeText(txt);
+    const t=document.getElementById('toast');t.textContent='Copiado: '+txt;t.classList.add('show');
+    clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),1400);
+  });
+});
+// Imán
+document.querySelectorAll('[data-magnet]').forEach(b=>{
+  const s=.35;
+  b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();const x=e.clientX-r.left-r.width/2;const y=e.clientY-r.top-r.height/2;b.style.transform='translate('+x*s+'px,'+y*s+'px)';});
+  b.addEventListener('mouseleave',()=>b.style.transform='translate(0,0)');
+});
+// Inclinación 3D
+document.querySelectorAll('[data-tilt]').forEach(c=>{
+  const max=10;
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const px=(e.clientX-r.left)/r.width-.5;const py=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(600px) rotateY('+(px*max)+'deg) rotateX('+(-py*max)+'deg)';c.style.boxShadow='0 22px 40px -24px rgba(52,71,170,.6)';});
+  c.addEventListener('mouseleave',()=>{c.style.transform='perspective(600px) rotateY(0) rotateX(0)';c.style.boxShadow='none';});
+});
+// Foco (spotlight)
+document.querySelectorAll('[data-spot]').forEach(c=>{
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
+});
+// Onda (ripple)
+document.querySelectorAll('[data-ripple]').forEach(b=>{
+  b.addEventListener('click',e=>{const r=b.getBoundingClientRect();const s=document.createElement('span');s.className='rip';const d=Math.max(r.width,r.height);s.style.width=s.style.height=d+'px';s.style.left=(e.clientX-r.left-d/2)+'px';s.style.top=(e.clientY-r.top-d/2)+'px';b.appendChild(s);setTimeout(()=>s.remove(),650);});
+});
+</script>
+</body>
+</html>
