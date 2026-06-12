@@ -119,6 +119,21 @@ CREATE TABLE IF NOT EXISTS login_attempts (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------
+--  LEADS  (solicitudes de presupuesto desde la landing)
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS leads (
+  id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  nombre     VARCHAR(120) NOT NULL,
+  telefono   VARCHAR(40)  NOT NULL,
+  mensaje    TEXT         DEFAULT NULL,
+  ip         VARCHAR(45)  DEFAULT NULL,
+  atendido   TINYINT(1)   NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_lead_atendido (atendido, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ---------------------------------------------------------------------
 --  SEMILLA: categorías por defecto (editables luego en el admin)
 -- ---------------------------------------------------------------------
 INSERT INTO doc_categories (nombre, orden) VALUES

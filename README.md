@@ -48,6 +48,13 @@ database/            schema.sql + seed.php
 
 - ✅ Fase 1 — Esquema MySQL + capa BD
 - ✅ Fase 2 — Auth (login, CSRF, sesiones, rate-limit, crear-contraseña)
-- ⏳ Fase 3 — Panel admin (comunidades, usuarios, categorías, documentos)
-- ⏳ Fase 4 — Panel usuario (dashboard, descarga protegida)
-- ⏳ Fase 5 — Landing de producción + SEO
+- ✅ Fase 3 — Panel admin (comunidades, usuarios, categorías, documentos, solicitudes)
+- ✅ Fase 4 — Panel usuario (dashboard, comunidad, descarga protegida IDOR-safe)
+- ✅ Fase 5 — Landing de producción (`index.php`) + SEO + formulario de leads
+
+## Pendiente de datos reales del cliente
+
+Los datos de la landing vienen del mockup de diseño y **hay que confirmarlos**:
+nombre de la administradora (Isabel Domínguez), nº de colegiada, teléfono
+(968 274 351), WhatsApp, email, dirección (Calle Trapería 12, Murcia).
+También: dominio, cuenta SMTP para activar emails, e imagen `assets/img/og.jpg`.
