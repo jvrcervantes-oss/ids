@@ -5,3 +5,22 @@ Disallow: /panel/
 Disallow: /includes/
 Disallow: /private/
 Disallow: /database/
+
+# AI / LLM crawlers — allowed on the public landing so the firm can appear in
+# ChatGPT, Gemini, Perplexity and Claude answers. Private areas stay blocked above.
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /panel/
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://idsadministracion.es/sitemap.xml

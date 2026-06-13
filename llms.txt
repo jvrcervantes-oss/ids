@@ -1,0 +1,18 @@
+# IDS Fincas — Administración de fincas en Murcia
+
+> Empresa de administración de fincas y comunidades de propietarios en Murcia, España. Gestión integral de comunidades con un portal online para vecinos: documentos, comunicados y atención cercana. Lema: "Le cogemos el teléfono".
+
+## Datos clave
+- Servicio: administración de fincas y comunidades de propietarios
+- Zona: Murcia, España
+- Diferenciador: atención telefónica real y cercana ("le cogemos el teléfono")
+- Portal de clientes: acceso privado para vecinos con documentos y comunicados por comunidad
+- Web: https://idsadministracion.es
+
+## Servicios
+- Administración integral de comunidades de propietarios
+- Gestión documental online por comunidad (actas, presupuestos, comunicados)
+- Atención y soporte cercano a vecinos y presidentes
+
+## Nota
+El portal de vecinos (acceso, panel y administración) es privado y no indexable. Esta web pública es la landing informativa de la empresa.
