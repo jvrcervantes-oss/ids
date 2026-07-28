@@ -52,7 +52,7 @@ $WHATSAPP = 'https://wa.me/34612345678';
       <a class="link" href="#servicios">Servicios</a>
       <a class="link" href="#nosotros">Nosotros</a>
       <a class="link" href="#contacto">Contacto</a>
-      <a class="btn btn-ghost" style="min-height:46px;padding:10px 22px;font-size:15px" href="<?= e($B) ?>/panel/login.php">Acceso clientes</a>
+      <a class="btn btn-ghost fx-fill" style="min-height:46px;padding:10px 22px;font-size:15px" href="<?= e($B) ?>/panel/login.php">Acceso clientes</a>
     </nav>
   </div>
 </header>
@@ -105,7 +105,7 @@ $WHATSAPP = 'https://wa.me/34612345678';
       ];
       foreach ($servicios as $s): ?>
         <div class="card-svc">
-          <div class="ico"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="7" y="6" width="18" height="22" stroke="#5E7150" stroke-width="1.8"></rect><rect x="11.5" y="11" width="3.5" height="3.5" fill="#5E7150"></rect><rect x="17" y="11" width="3.5" height="3.5" fill="#5E7150"></rect><rect x="13.5" y="23" width="5" height="5" fill="#5E7150"></rect></svg></div>
+          <div class="ico"><svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="7" y="6" width="18" height="22" stroke="#6260FF" stroke-width="1.8"></rect><rect x="11.5" y="11" width="3.5" height="3.5" fill="#6260FF"></rect><rect x="17" y="11" width="3.5" height="3.5" fill="#6260FF"></rect><rect x="13.5" y="23" width="5" height="5" fill="#6260FF"></rect></svg></div>
           <h3><?= e($s[0]) ?></h3>
           <p><?= e($s[1]) ?></p>
         </div>
@@ -133,7 +133,7 @@ $WHATSAPP = 'https://wa.me/34612345678';
 <!-- TESTIMONIOS -->
 <section class="bg-huerta">
   <div class="container">
-    <div class="eyebrow" style="color:#DCE3D3">Lo que dicen las comunidades</div>
+    <div class="eyebrow" style="color:#C9C9F2">Lo que dicen las comunidades</div>
     <h2 class="section-title">Vecinos con la casa en orden</h2>
     <div class="quotes">
       <?php
@@ -175,7 +175,7 @@ $WHATSAPP = 'https://wa.me/34612345678';
             <p style="margin:0;color:var(--texto)">Hemos recibido su solicitud. Le llamaremos en horario de oficina, normalmente el mismo día.</p>
           </div>
         <?php else: ?>
-          <form method="post" action="<?= e($B) ?>/contacto.php">
+          <form method="post" action="<?= e($B) ?>/contacto">
             <?= csrf_field() ?>
             <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
             <label><span class="lbl">Su nombre</span>
