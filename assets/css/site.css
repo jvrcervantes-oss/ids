@@ -1,10 +1,10 @@
 /* IDS Fincas — Landing · estilos de producción (mobile-first) */
 :root{
-  /* Combo 1 — Royal Blue + Powder Pink + acento oro */
-  --tinta:#3447AA; --tinta-d:#28368A; --lino:#FDF7F7; --oro:#D08A2E; --oro-d:#BD7B22;
-  --oro-text:#A9701A; --salvia:#5E7150; --azul:#FBEAEB; --azul-2:#F6DEDF;
-  --texto:#46506B; --gris:#7A7480; --crema-2:#F6E9E9; --linea:#ECDEDE;
-  --shadow-blue:52,71,170;
+  /* Combo 6 — Periwinkle + Lavender + acento oro */
+  --tinta:#6260FF; --tinta-d:#4E4CE0; --lino:#FAFAFF; --oro:#D08A2E; --oro-d:#BD7B22;
+  --oro-text:#A9701A; --salvia:#6260FF; --azul:#E4E4FF; --azul-2:#D6D6FB;
+  --texto:#44445F; --gris:#7A7A8C; --crema-2:#EDEDFB; --linea:#E7E7F4;
+  --shadow-blue:98,96,255; --indigo:#35357F;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -16,7 +16,8 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spa
 .eyebrow{font-size:13px;letter-spacing:2px;font-weight:500;color:var(--gris);margin-bottom:14px;text-transform:uppercase}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:13px 30px;border-radius:999px;
      font-family:'Public Sans',sans-serif;font-size:17px;font-weight:600;text-decoration:none;cursor:pointer;border:1.5px solid transparent;
-     transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+     position:relative;overflow:hidden;isolation:isolate;
+     transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .25s ease}
 .btn:active{transform:translateY(0)}
 .btn-gold{background:var(--oro);color:#2A2238;box-shadow:0 6px 16px -10px rgba(208,138,46,.7)}
 .btn-gold:hover{background:var(--oro-d);transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(208,138,46,.6)}
@@ -24,6 +25,21 @@ h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spa
 .btn-navy:hover{background:var(--tinta-d);transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(var(--shadow-blue),.55)}
 .btn-ghost{background:transparent;color:var(--lino);border-color:rgba(255,255,255,.55)}
 .btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
+
+/* === Efectos con nombre (catálogo de diseño) === */
+/* Relleno — el color entra barriendo desde la izquierda */
+.fx-fill::before{content:"";position:absolute;inset:0;background:var(--tinta);transform:scaleX(0);transform-origin:left;
+     transition:transform .3s cubic-bezier(.65,0,.35,1);z-index:-1}
+.fx-fill:hover::before{transform:scaleX(1)}
+.btn-ghost.fx-fill:hover{background:transparent;border-color:var(--lino)}
+.btn-ghost.fx-fill::before{background:var(--lino)}
+.btn-ghost.fx-fill:hover{color:var(--tinta)}
+/* Brillo — un destello de luz cruza el botón */
+.fx-shine::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;
+     background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);
+     transition:left .6s ease;pointer-events:none}
+.fx-shine:hover::after{left:140%}
+
 .phone{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:var(--oro-text);text-decoration:none}
 
 /* Header */
@@ -60,7 +76,7 @@ section{padding:88px 0}
 .bg-cielo{background:var(--azul)}
 .bg-lino{background:var(--lino)}
 .bg-tinta{background:var(--tinta);color:var(--lino)}
-.bg-huerta{background:var(--salvia)}
+.bg-huerta{background:var(--indigo)}
 .section-title{font-size:clamp(28px,4.5vw,42px);color:var(--tinta);margin-bottom:40px}
 .bg-tinta .section-title,.bg-huerta .section-title{color:var(--lino)}
 
@@ -74,7 +90,7 @@ section{padding:88px 0}
 .cards{display:grid;grid-template-columns:1fr;gap:22px}
 .card-svc{background:var(--azul);border:1px solid rgba(var(--shadow-blue),.06);border-radius:16px;padding:32px 28px;
           transition:transform .2s ease,box-shadow .2s ease}
-.card-svc:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(var(--shadow-blue),.45)}
+.card-svc:hover{transform:translateY(-8px);box-shadow:0 26px 44px -24px rgba(var(--shadow-blue),.5)}
 .bg-cielo .card-svc{background:#fff}
 .card-svc .ico{width:56px;height:62px;background:#fff;border-radius:999px 999px 0 0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;margin-bottom:18px;box-shadow:0 4px 14px -8px rgba(var(--shadow-blue),.4)}
 .card-svc h3{font-size:22px;margin-bottom:10px}
@@ -115,6 +131,24 @@ section{padding:88px 0}
 .contact-info .divider{border-top:1px solid var(--linea);padding-top:22px}
 .success{animation:fade .4s ease}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* Etiqueta flotante */
+.ff{position:relative;margin-bottom:16px}
+.ff input{width:100%;padding:23px 16px 9px;border:1px solid #C9C9F0;border-radius:8px;font-family:'Public Sans',sans-serif;font-size:17px;color:var(--tinta);background:var(--lino);outline:none;transition:border-color .2s}
+.ff input:focus{border-color:var(--tinta)}
+.ff label{position:absolute;left:16px;top:17px;color:var(--gris);font-size:16px;pointer-events:none;transition:.16s ease}
+.ff input:focus+label,.ff input:not(:placeholder-shown)+label{top:8px;font-size:12px;color:var(--tinta);font-weight:600}
+/* Tic de éxito */
+.tic{width:58px;height:58px;margin-bottom:14px}
+.tic circle{stroke:var(--tinta);stroke-width:3;fill:none;stroke-dasharray:170;stroke-dashoffset:170;animation:ticd 1.2s ease forwards}
+.tic path{stroke:var(--tinta);stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:50;stroke-dashoffset:50;animation:ticd .5s .6s ease forwards}
+@keyframes ticd{to{stroke-dashoffset:0}}
+/* Pulso */
+.pulse-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#2F9E5B;position:relative;margin-right:8px;vertical-align:middle}
+.pulse-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2F9E5B;animation:pulsa 1.6s ease-out infinite}
+@keyframes pulsa{0%{transform:scale(1);opacity:.6}100%{transform:scale(3.2);opacity:0}}
+/* Cargando */
+.spin{display:inline-block;width:20px;height:20px;border-radius:50%;border:3px solid rgba(255,255,255,.45);border-top-color:#fff;animation:spin .7s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 /* Footer */
 .site-footer{background:var(--tinta);color:var(--azul);padding:52px 24px 36px}
